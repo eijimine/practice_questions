@@ -2,7 +2,12 @@
 # [1, 12, 144, 1728, 20736, 248832, 2985984, 35831808]
 # Notice that every element of the array is equal to the previous element times twelve. (Finding out how to do exponentials might be helpful here)
 
+array = []
 
+8.times do |num|
+  array << 12 ** num
+end
+puts array
 
 
 # Reversals
@@ -12,6 +17,13 @@
 # words
 # => ["htxis", "htfif", "htruof", "driht", "dnoces", "tsrif"]
 
+words = ['first', 'second', 'third', 'fourth', 'fifth', 'sixth']
+
+words.each do |word|
+  word.reverse!
+end
+words.reverse!
+puts words
 
 
 # Array to Hash
