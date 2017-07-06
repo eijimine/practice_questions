@@ -175,5 +175,5 @@ class Human
     end
   end
 
-  
+
 end
