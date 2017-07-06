@@ -48,10 +48,9 @@ class Cat
 
   def pet
     "Petting the cat at my own risk!"
-    num = rand(1..2)
-    if num == 1
+    if @rested == true
       puts "Purrrrrrrrrrr......."
-    elsif num == 2
+    elsif @rested == false
       puts "Hissssssssss........"
     end
   end
@@ -90,7 +89,7 @@ class Cat
 
 end
 
-a = Cat.new("Katty")
+a = Cat.new("Pappy O' Donnel")
 
 a. happy?
 
@@ -112,3 +111,69 @@ a.pet
 a.pet
 
 a.happy?
+
+
+b = Cat.new("Jake the Snake")
+c = Cat.new("Morgan Freeman")
+d = Cat.new("Jordan Michael")
+e = Cat.new("Wilbur Ross")
+f = Cat.new("Blake the Snake")
+
+
+#===============================================================
+
+# Write a human class
+
+# > A human is initialized with its name
+# > A human can own multiple cats
+# > A human can adopt another new cat at any time
+# > A human can feed, entertain, and pet all of its cats at the same time
+# > A human is considered crazy if it owns more than some large number of cats
+#   (you can decide how many)
+
+class Human
+
+  attr_accessor :name
+
+  def initialize(name)
+    @name = name
+    @cats = []
+    @crazy = false
+  end
+
+  def adopt_cat(cat)
+    @cats << cat
+    cat.adopt
+  end
+
+  def feed
+    @cats.each do |cat|
+      cat.eat
+    end
+  end
+
+  def entertain
+    @cats.each do |cat|
+      cat.play
+    end
+  end
+
+  def pet
+    @cats.each do |cat|
+      cat.pet
+    end
+  end
+
+
+
+  def crazy?
+    if @number_of_cats.count > 10
+      @crazy = true
+      puts "You're a nutcase!"
+    else
+      puts "Haven't lost your marbles just yet!"
+    end
+  end
+
+  
+end
