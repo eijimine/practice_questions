@@ -30,9 +30,10 @@ class Cat
     @adopted = true
   end
 
-  def entertain
+  def play
     puts "Entertaining cat now!"
     @entertained = true
+    @rested = false
   end
 
   def sleep
@@ -55,29 +56,59 @@ class Cat
     end
   end
 
-  def happy
-    puts "Are you happy?"
-    if @happy == false
-      puts "Cat: I'm pretty pissed actually."
-    elsif @happy == true
-      puts "Cat: Couldn't be happier, thanks bud."
+  def happy?
+    puts "State your happiness levels cat, are you happy?"
+    if  @adopted == true &&  @entertained == true && @rested == true && @fed == true
+      @happy = true
+    else
+      check_if_happy
     end
   end
+
+  def check_if_happy
+    if @happy == false
+      puts "#{@name}: I'm pretty pissed actually."
+      why_so
+    elsif @happy == true
+      puts "#{@name}: Couldn't be happier, thanks bud."
+    end
+  end
+
+  def why_so
+    if @adopted == false
+      puts "I haven't been adopted yet!"
+    elsif @entertained == false
+      puts "I am not entertained. Are you not entertained?"
+    elsif @rested == false
+      puts "I'm tired. I need rest."
+    elsif @fed == false
+      puts "Feed meeeee!!!"
+    end
+  end
+
+
 
 end
 
 a = Cat.new("Katty")
 
-a. happy
+a. happy?
 
 a.adopt
-a.entertain
+a.happy?
+
+a.play
+a.happy?
+
 a.sleep
+a.happy?
+
 a.feed
+a.happy?
 
 a.pet
 a.pet
 a.pet
 a.pet
 
-a.happy
+a.happy?
