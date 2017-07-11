@@ -21,33 +21,39 @@
 
 # =============> FRED'S SOLUTION
 #
-# CARDS_IN_A_DECK = 52
-#
-# def card_count(played_cards_string)
-#   # Check input
-#   return false if played_cards_string.size > CARDS_IN_A_DECK
-#
-#   count = 0
-#   #Do the Counting
-#
-#   played_cards_string.chars.each do |card|
-#     case card
-#     when '2', '3', '4', '5', '6'
-#       count += 1
-#     when 'T', 'J', 'Q', 'K', 'A'
-#       count -= 1
-#     end
-#   end
-#
-#   return count
-#
-# end
-#
-# puts card_count('')
-# puts card_count('233456789283849585JKJKJKTTTQQQAAA')
-# card_count('K2T6AA')  ---> -2
-# card_count('798tt23') ---> 0
-# card_count('235T22')  ---> 4
+CARDS_IN_A_DECK = 52
+CARDS_OF_EACH_RANK = 4
+
+def card_count(played_cards_string)
+
+  # Check Input
+  return false if played_cards_string.size > CARDS_IN_A_DECK
+
+  # Check that there are no more than 4 of each card
+  #cards_hash = {}
+  #%w(2 3 4 5 6 7 8 9 T J Q K A).each { |card| cards_hash[card] = 0 }
+  played_cards_hash = Hash.new(0)
+  played_cards_string.chars.each { |card| played_cards_hash[card] += 1 }
+  return false if played_cards_hash.select { |k,v| v > CARDS_OF_EACH_RANK }.size > 0
+
+  # Compute the Count
+  initial_count = 0
+  played_cards_string.chars.each do |card|
+    initial_count += case card
+    when '2', '3', '4', '5', '6' then 1
+    when 'T', 'J', 'K', 'Q', 'A' then -1
+    else 0
+    end
+  end
+
+  return initial_count
+end
+
+puts card_count('K2T6AA')
+puts card_count('798TT23')
+puts card_count('235T22')
+puts card_count('KKT2KKKAAAAA')
+
 #
 # ================== end
 
@@ -58,36 +64,36 @@
 
 
 
-variations = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'] #setting up deck
-cards = [] #deck of cards
-
-variations.each do |card|
-  4.times do
-    cards << card
-  end
-end
-
- cards #deck successfuly created
- cards.count #deck verified
-
-# SOLUTION METHOD
-
-count = 0
-
- def serve_card
-   served = cards.sample
-   puts served
-
-   case served
-   when '2', '3', '4', '5', '6'
-     count += 1
-   when 'T', 'J', 'Q', 'K', 'A'
-     count -= 1
-   end
-
-   cards.delete_if{|i|i==served}
-   puts count
- end
+# variations = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'] #setting up deck
+# cards = [] #deck of cards
+#
+# variations.each do |card|
+#   4.times do
+#     cards << card
+#   end
+# end
+#
+#  cards #deck successfuly created
+#  cards.count #deck verified
+#
+# # SOLUTION METHOD
+#
+# count = 0
+#
+#  def serve_card
+#    served = cards.sample
+#    puts served
+#
+#    case served
+#    when '2', '3', '4', '5', '6'
+#      count += 1
+#    when 'T', 'J', 'Q', 'K', 'A'
+#      count -= 1
+#    end
+#
+#    cards.delete_if{|i|i==served}
+#    puts count
+#  end
 
 
 
