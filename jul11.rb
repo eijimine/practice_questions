@@ -19,11 +19,75 @@
 
 
 
+# =============> FRED'S SOLUTION
+#
+# CARDS_IN_A_DECK = 52
+#
+# def card_count(played_cards_string)
+#   # Check input
+#   return false if played_cards_string.size > CARDS_IN_A_DECK
+#
+#   count = 0
+#   #Do the Counting
+#
+#   played_cards_string.chars.each do |card|
+#     case card
+#     when '2', '3', '4', '5', '6'
+#       count += 1
+#     when 'T', 'J', 'Q', 'K', 'A'
+#       count -= 1
+#     end
+#   end
+#
+#   return count
+#
+# end
+#
+# puts card_count('')
+# puts card_count('233456789283849585JKJKJKTTTQQQAAA')
+# card_count('K2T6AA')  ---> -2
+# card_count('798tt23') ---> 0
+# card_count('235T22')  ---> 4
+#
+# ================== end
 
 
 
 
 
+
+
+
+variations = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A'] #setting up deck
+cards = [] #deck of cards
+
+variations.each do |card|
+  4.times do
+    cards << card
+  end
+end
+
+ cards #deck successfuly created
+ cards.count #deck verified
+
+# SOLUTION METHOD
+
+count = 0
+
+ def serve_card
+   served = cards.sample
+   puts served
+
+   case served
+   when '2', '3', '4', '5', '6'
+     count += 1
+   when 'T', 'J', 'Q', 'K', 'A'
+     count -= 1
+   end
+
+   cards.delete_if{|i|i==served}
+   puts count
+ end
 
 
 
