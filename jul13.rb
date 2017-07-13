@@ -19,8 +19,68 @@
 # bin_to_dec('101')    --> 5
 # bin_to_dec('101100') --> 44
 
-def convert_to_dec(binary_input)
 
 
 
+
+
+
+def bin_to_dec()
+  dec = 0
+
+  bin.chars.reverse.each_with_index do |char, i|
+    puts "char=#{chart}, i=#{i}"
+    # if char == '1'
+    #   dec += if i == 0
+    #     1
+    #   elsif i == 1
+    #     2
+    #   elsif i == 2
+    #     4
+    #   elsif i == 3
+    #     8
+    #   elsif i == 4
+    #     16
+    #   elsif i == 5
+    #     32
+    #   elsif i == 6
+    #     64
+    #   elsif i == 7
+    #     128
+    #   end
+
+    dec += char.to_i*(2**i)
+
+  end
+
+  return dec
 end
+
+puts bin_to_dec('0')
+puts bin_to_dec('10')
+puts bin_to_dec('101')
+puts bin_to_dec('101100')
+
+
+
+# 00000000 = 0
+# 00000001 = 1
+# 00000010 = 2
+# 00000011 = 3
+# 00000100 = 4
+# 00000101 = 5
+# 00000110 = 6
+# 00000111 = 7
+# 00001000 = 8
+# 00010000 = 16
+# 00100000 = 32
+# 01000000 = 64
+# 10000000 = 128
+#
+# 1111111 = 255
+# 11110000 =
+#
+#
+#
+#
+#
