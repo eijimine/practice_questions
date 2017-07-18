@@ -14,4 +14,27 @@
 # 8. Iterate over the last 4 numbers
 # 9. Return the resulting string
 
-result = 
+digits = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+
+def create_phone_number(digits)
+
+result += '('
+index = 0
+
+digits.each do |digit|
+    if index == 3
+      result += ') '
+    elsif index == 6
+      result += '-'
+    end
+
+  result += digit.to_s
+
+  index += 1
+  end
+
+  result
+end
+
+
+create_phone_number(digits)
