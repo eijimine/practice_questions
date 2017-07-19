@@ -99,12 +99,25 @@ puts refactored_create_phone_number(digits)
 # string decimal representation of a lucky ticket number, or false for all other numbers.
 # It should handle errors for empty strings or strings which don't represent a decimal number.
 
-str = [8,4,8]
+str = [1,8,4,4,8,1]
 
 def luck_check(str)
-  p str.count
+  #count array
+  count = str.count
 
+  # if even split down the middle then add left and right and compare
   p str
+  p count
+  p "this is it"
+  p  str.slice(0..count/2-1)
+  p  str.slice(0..count/2-1).sum
+
+
+
+  # if odd then leave middle and add left and right and compare
+
+
+
 end
 
 luck_check(str)
