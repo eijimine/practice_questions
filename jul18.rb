@@ -99,9 +99,10 @@ puts refactored_create_phone_number(digits)
 # string decimal representation of a lucky ticket number, or false for all other numbers.
 # It should handle errors for empty strings or strings which don't represent a decimal number.
 
-str1 = [1,8,4,4,8,1]
-str2 = [2,8,1,3,8,2]
-str3 = [5,8,1,2,1,8,5]
+str1 = [1,2,3,3,2,1]
+str2 = [4,5,6,3,8,2]
+str3 = [5,5,1,4,1,5,5]
+str4 = [9,9,1,7,1,3,2]
 
 def luck_check(str)
   #count array
@@ -109,43 +110,35 @@ def luck_check(str)
 
   # if even split down the middle then add left and right and compare
   # if odd then leave middle and add left and right and compare
-
-  p str
-  p count
-  p "this is it"
-  p  str.slice(0..count/2-1)
-  left = str.slice(0..count/2-1).sum
-  p  str.slice(count/2..count)
-  right = str.slice(count/2..count).sum
-  if left == right
-    puts "Lucky ticket!"
+  if count.even? == true
+    p "Even string"
+    p  str.slice(0..count/2-1)
+    left = str.slice(0..count/2-1).sum
+    p  str.slice(count/2..count)
+    right = str.slice(count/2..count).sum
+    if left == right
+      puts "Lucky ticket!"
+    else
+      puts "Nothing special about this ticket."
+    end
   else
-    puts "Nothing special about this ticket."
+    p "Odd string"
+    p str.slice(0..count/2-1)
+    left = str.slice(0..count/2-1).sum
+    p str.slice(count/2+1..count)
+    right = str.slice(count/2+1..count).sum
+    if left == right
+      puts "Lucky ticket!"
+    else
+      puts "Nothing special about this ticket"
+    end
   end
-
-
 
 
 
 end
 
-luck_check(str1)
-luck_check(str2)
-# luck_check(str3)
-#
-# if count.even? == true
-#   p "Even string"
-#   p  str.slice(0..count/2-1)
-#   left = str.slice(0..count/2-1).sum
-#   p  str.slice(count/2..count)
-#   right = str.slice(count/2..count).sum
-#   if left == right
-#     puts "Lucky ticket!"
-#   else
-#     puts "Nothing special about this ticket."
-#   end
-# else
-#   p "Odd string"
-#   p  str.slice(0..((count/2)-1)
-#   p  str.slice((count/2)+1..count)
-# end
+# luck_check(str1)
+# luck_check(str2)
+luck_check(str3)
+luck_check(str4)
